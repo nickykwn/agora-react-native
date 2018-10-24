@@ -25,15 +25,15 @@ const agoraKitEmitter = new NativeEventEmitter(AgoraRtcEngine);
 var isSpeakerPhone = false;
 
 export default class App extends Component {
-  
-// Agora Action 
+
+// Agora Action
   _joinChannel() {
     AgoraRtcEngine.setLocalVideoView(this._localView, AgoraRtcEngine.AgoraVideoRenderModeFit);
     AgoraRtcEngine.setVideoProfile(AgoraRtcEngine.AgoraVideoProfileDEFAULT, false);
     AgoraRtcEngine.startPreview();
     AgoraRtcEngine.joinChannel(null, "rnchannel01", "React Native for Agora RTC SDK", 0);
   }
-  
+
   _leaveChannel() {
     AgoraRtcEngine.stopPreview();
     AgoraRtcEngine.leaveChannel();
@@ -47,20 +47,20 @@ export default class App extends Component {
     AgoraRtcEngine.setEnableSpeakerphone(isSpeakerPhone);
     isSpeakerPhone = !isSpeakerPhone;
   }
-  
+
   render() {
-    
-    AgoraRtcEngine.createEngine('YOUR APP ID');
+
+    AgoraRtcEngine.createEngine('2169366d339f4a2a82f225fe80b5d602');
 
     AgoraRtcEngine.enableVideo();
     AgoraRtcEngine.enableAudio();
     AgoraRtcEngine.setVideoProfileDetail(360, 640, 15, 300);
     AgoraRtcEngine.setChannelProfile(AgoraRtcEngine.AgoraChannelProfileCommunication);
-    
+
     return (
     <View style = {styles.container} >
-      
-      <AgoraRendererView 
+
+      <AgoraRendererView
         ref={component => this._localView = component}
         style = {{width: 360, height: 240}}
       />
@@ -113,7 +113,7 @@ export default class App extends Component {
   componentWillUnmount() {
     remoteDidJoineChannelNoti.remove()
   }
-  
+
 }
 
 const styles = StyleSheet.create({
