@@ -48,6 +48,14 @@ export default class App extends Component {
     isSpeakerPhone = !isSpeakerPhone;
   }
 
+  disableVideo() {
+    AgoraRtcEngine.disableVideo();
+  }
+
+  toggleAudio() {
+    AgoraRtcEngine.muteLocalAudioStream(muted);
+  }
+
   render() {
 
     AgoraRtcEngine.createEngine('2169366d339f4a2a82f225fe80b5d602');
@@ -97,7 +105,23 @@ export default class App extends Component {
             color="#841584"
           />
       </View>
-
+      <View>
+        <Button
+          onPress={this.toggleAudio.bind(this)}
+          title="Mute"
+          color="#841584"
+        />
+        <Button
+          onPress={this.disableVideo.bind(this)}
+          title="Turn off Camera"
+          color="#841584"
+        />
+        <Button
+          onPress={this._leaveChannel.bind(this)}
+          title="Leave Channel"
+          color="#841584"
+        />
+      </View>
     </View>
     );
   }
